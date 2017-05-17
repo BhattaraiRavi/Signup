@@ -1,7 +1,7 @@
 <div class="container">
-
     <div class="row clearfix well">
       <div class="col-md-12 column">
+      <h1><center>Event</center></h1>
         <%= form_for @event do |f| %>
           <% if @event.errors.any? %>
             <div id="error_explanation">
@@ -13,7 +13,7 @@
             </ul>
             </div>
           <% end %>
-        <h2>Event Info</h2>
+          <h2>Event Info</h2>
           <div class="col-md-8 column">
             <p>
               <%= f.label :title %><br>
@@ -34,17 +34,9 @@
             </p>
             <p>
               <%= f.label :image %><br>
-            <div class="field">
-              <%= f.file_field :imageimage %>
-              <% if f.object.image? %>
-                <%= image_tag f.object.image.url %>
-              <% end %>
-            </div>
+              <%= f.file_field :image %>
             </p> 
-
-            <div class="actions">
               <%= f.submit %>
-            </div>
         <% end %>
           </div>
       </div>
