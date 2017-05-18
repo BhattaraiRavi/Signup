@@ -29,14 +29,7 @@
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
-      <div class="col-md-3 column">
-        <%= image_tag @event.image, size: "200x200" %>
-      </div>
-    </div>
-    <div class="row clearfix well">
-      <center><h1> Registration </h1></center>
+          <center><h4> Please fill in the information below to register. </h4></center>
       <%= form_for @participant do |f| %>
         <%= f.hidden_field :event_id %>
         <p>
@@ -54,7 +47,12 @@
         <p>
           <%= f.submit 'Register'%>
         </p>
-      <% end %>  
+      <% end %>
+        </div>
+      </div>
+      <div class="col-md-3 column">
+        <%= image_tag @event.image, size: "250x190" %>
+      </div>
     </div>
     <div class="row clearfix well">
       <center><h1> List of Registered Participants at <%= @event.title %></h1></center> 
@@ -75,5 +73,9 @@
           <% end %>
 
         </table>  
+        <p>
+          <i class="fa fa-file-excel-o" style="font-size:36px"></i>
+          <%= link_to "Export to CSV", participants_path(format: "csv") %>
+        </p>
     </div>
 </div>
