@@ -1,48 +1,62 @@
 <div class="container">
   <div class="row clearfix well">
     <div class="col-md-12 column">
+    	<div align="right">
+    	<%= form_tag(events_path, :method => "get", id: "search-form") do %>
+    		<%= text_field_tag :search, params[:search], placeholder: "Search Events" %>
+            <%= submit_tag "Search" %>
+        <% end %>
+        </div>
     <h1> List of Events </h1>
     </div>
     <div class="col-md-12 column">
-<table class="table table-striped">
-	<tr>
-	<th> Title </th>
-	<th> Day </th>
-	<th> Date </th>
-	<th> Month </th>
-	<th> Year </th>
-	</tr>
+		<table class="table table-striped">
+			<tr>
+			<th> Title </th>
+			<th> Day </th>
+			<th> Date </th>
+			<th> Month </th>
+			<th> Year </th>
+			</tr>
 
-	<% @events.each do |event| %>
+			<% @events.each do |event| %>
 
-	<tr>
-		<td> <%= event.title %> </td>
-		<td> <%= event.day %> </td>
-		<td> <%= event.date %> </td>
-		<td> <%= event.month %> </td>
-		<td> <%= event.year %> </td>
-		<td>
-			<div class="col-md-2 column">
-			<%= link_to 'Show', event_path(event) %>
-			</div>
-			<div class="col-md-2 column">
-			<%= link_to 'Edit', edit_event_path(event) %>
-			</div>
-			<div class="col-md-2 column">
-			<%= link_to 'Delete', event_path(event), method: :delete %>
-			</div>
-		</td>
-	</tr>
+			<tr>
+				<td> <%= event.title %> </td>
+				<td> <%= event.day %> </td>
+				<td> <%= event.date %> </td>
+				<td> <%= event.month %> </td>
+				<td> <%= event.year %> </td>
+				<td>
+					<div class="col-md-2 column">
+					<%= link_to 'Show', event_path(event) %>
+					</div>
+					<% if admin_signed_in?%>
+						<div class="col-md-2 column">
+						<%= link_to 'Edit', edit_event_path(event) %>
+						</div>
+						<div class="col-md-2 column">
+						<%= link_to 'Delete', event_path(event), method: :delete %>
+						</div>
+					<% end %>
+				</td>
+			</tr>
 
-	<% end %>
+			<% end %>
 
-</table>
-</div>
+		</table>
+	</div>
 <br>
-<div class="col-md-2 column">
-    <button onclick = "location.href='/events/new';" class="btn btn-primary btn-block" type="button">
-    Create New Event
-    </button>
-</div>
+<% if admin_signed_in?%>
+	<div class="col-md-2 column">
+    	<button onclick = "location.href='/events/new';" class="btn btn-primary" type="button">
+    	Create New Event
+    	</button>
+<% else %>
+		<button onclick = "location.href='/events/new';" class="btn btn-primary" type="button" disabled="true">
+    	Create New Event
+    	</button>
+<% end %>
+	</div>
 	</div>
 </div>

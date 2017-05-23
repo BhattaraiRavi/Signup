@@ -17,5 +17,10 @@ class Event < ApplicationRecord
 	mount_uploader :image, ImageUploader
 
 	has_many :participants
+
+	def self.search(search)
+ 		where("title LIKE ? or month LIKE ? or year LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
+  	end
+
 end
 

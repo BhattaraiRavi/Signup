@@ -9,8 +9,19 @@
   </head>
 
   <body>
-  
-  		<% if flash[:notice] %>
+  <div class="container">
+    <div class="row clearfix well">
+      <div class="col-md-12 column">
+        <%= link_to 'Events', events_path, :class=>"btn btn-primary", :style=>"float: left"%>
+       		<% if admin_signed_in? %>
+            <%= link_to 'Logout', destroy_admin_session_path, method: :delete , :class=>"btn btn-primary", :style=>"float: right"%>
+          <% else %>
+            <%= link_to 'Sign In', new_admin_session_path, :class=>"btn btn-primary" , :style=>"float: right"%>
+          <% end %>
+        </div>
+      </div>          
+
+      <% if flash[:notice] %>
   			<p style="color: green">
   			<%= flash[:notice] %>
   			</p>
@@ -20,7 +31,7 @@
   		<%= flash[:alert] %>
   		</p>
   	<% end %>
-
+  </div>
 
     <%= yield %>
   </body>

@@ -56,5 +56,6 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 gem 'font-awesome-sass'
+gem 'devise'
 
 ruby '2.3.3'

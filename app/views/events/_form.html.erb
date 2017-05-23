@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row clearfix well">
       <div class="col-md-12 column">
-      <h1><center>Event</center></h1>
+      <h1><center>Event@FedEx Institute of Technology</center></h1>
         <%= form_for @event do |f| %>
           <% if @event.errors.any? %>
             <div id="error_explanation">
@@ -14,7 +14,7 @@
             </div>
           <% end %>
           <h2>Event Info</h2>
-          <div class="col-md-8 column">
+          <div class="col-md-4 column">
             <p>
               <%= f.label :title %><br>
               <%= f.text_field :title %>
@@ -36,9 +36,14 @@
               <%= f.label :image %><br>
               <%= f.file_field :image %>
             </p> 
+            <br>
+            <br>
               <%= f.submit %>
         <% end %>
           </div>
+          <div class="col-md-8 column">
+        <img class="img-thumbnail" alt="FIT Building" src= "/fedex-institute.jpg">
+      </div>
       </div>
     </div>
 </div>
