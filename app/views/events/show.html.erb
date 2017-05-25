@@ -15,7 +15,7 @@
             <tbody>
               <tr>
                 <td><h4><strong> Date of Event: </strong></h4></td>
-                <td><h4><strong><%= @event.day %>, <%= @event.month %> <%= @event.date %> <%= @event.year %> </strong></h4></td>
+                <td><h4><strong><%= @event.fromdate.to_time.strftime('%A, %B %e, %Y') %></strong></h4></td>
               </tr>
             </tbody>
           </table>
@@ -35,10 +35,14 @@
           <%= f.text_field :company %>
         </p>
         <p>
-          <%= f.submit 'Register'%>
-        </p>
-        <h6><strong>Disclaimer:</strong> 
+        <% if DateTime.now <= @event.fromdate %>
+          <%= f.submit 'Register', :disabled => false %>
+          <h6><strong>Disclaimer:</strong> 
         <i>By registering for the Event, you agree that FedEx Institute of Technology may use your email address to send Event updates and post-Event survey evaluations. </i> </h6>
+        <% else %>
+          <p class="text-danger">Cannot Register any participants. This event has already occured in the past.</p>
+        <% end %>
+        </p>
       <% end %>
         </div>
       </div>

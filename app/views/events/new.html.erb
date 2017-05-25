@@ -1,13 +1,2 @@
-<div class="container">
-  <div class="row clearfix well">
-    <div class="col-md-12 column">
-        <div class="col-md-2 column">
-          <button onclick = "location.href='/events';" class="btn btn-primary btn-block" type="button">
-            Events
-          </button>
-        </div>
-    </div>
-  </div>
-</div>
 <% provide(:title, "Create Event") %>
 <%= render 'form', event: @event %>

@@ -4,13 +4,12 @@
 #
 #  id         :integer          not null, primary key
 #  title      :string
-#  day        :string
-#  date       :integer
-#  month      :string
-#  year       :integer
 #  image      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  fromdate   :datetime
+#  todate     :datetime
+#  multiday   :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

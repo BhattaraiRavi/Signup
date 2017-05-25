@@ -12,21 +12,21 @@
     <div class="col-md-12 column">
 		<table class="table table-striped">
 			<tr>
-			<th> Title </th>
-			<th> Day </th>
-			<th> Date </th>
-			<th> Month </th>
-			<th> Year </th>
+				<th> Title </th>
+				<th> Event Start Date </th>
+				<th> Event End Date </th>
 			</tr>
 
 			<% @events.each do |event| %>
 
 			<tr>
 				<td> <%= event.title %> </td>
-				<td> <%= event.day %> </td>
-				<td> <%= event.date %> </td>
-				<td> <%= event.month %> </td>
-				<td> <%= event.year %> </td>
+				<td> <%= event.fromdate.to_time.strftime('%D') %> </td>
+				<% if event.todate != nil %>
+					<td> <%= event.todate.to_time.strftime('%D') %> </td>
+				<% else %>
+					<td> <%= "N/A" %>
+				<% end %>
 				<td>
 					<div class="col-md-2 column">
 					<%= link_to 'Show', event_path(event) %>
