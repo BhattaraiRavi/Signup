@@ -6,7 +6,7 @@ class ParticipantsController < ApplicationController
 		@participants = Participant.where("event_id = ?",@event_id)
 		respond_to do |format|
       		format.html
-      		format.csv { send_data @participants.to_csv, filename: "participants-#{Date.today}.csv" }
+      		format.csv { send_data @participants.to_csv, filename: "participants for #{@event_id.title}.csv" }
     	end
   	end
 

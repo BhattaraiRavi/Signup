@@ -15,7 +15,7 @@
             <tbody>
               <tr>
                 <td><h4><strong> Date of Event: </strong></h4></td>
-                <td><h4><strong><%= @event.fromdate.to_time.strftime('%A, %B %e, %Y') %></strong></h4></td>
+                <td><h4><strong><%= @event.fromdate.to_time.strftime('%a, %B %e, %Y') %></strong></h4></td>
               </tr>
             </tbody>
           </table>
@@ -70,8 +70,6 @@
         <p>
           <% if admin_signed_in? %>
             <%= link_to "Export to CSV", participants_path(format: "csv"), :class=>"btn btn-primary", :disabled => false %>
-          <% else %>
-            <%= link_to "Export to CSV", participants_path(format: "csv"), :class=>"btn btn-primary", :disabled => true %>
           <% end %>
         </p>
     </div>
