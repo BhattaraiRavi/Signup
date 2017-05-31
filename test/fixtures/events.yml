@@ -2,14 +2,15 @@
 #
 # Table name: events
 #
-#  id         :integer          not null, primary key
-#  title      :string
-#  image      :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  fromdate   :datetime
-#  todate     :datetime
-#  multiday   :string
+#  id          :integer          not null, primary key
+#  title       :string
+#  image       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  fromdate    :datetime
+#  todate      :datetime
+#  multiday    :string
+#  description :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

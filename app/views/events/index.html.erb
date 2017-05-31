@@ -7,41 +7,91 @@
             <%= submit_tag "Search" %>
         <% end %>
         </div>
-    <h1> List of Events </h1>
+    <h1> List of Current Events </h1>
     </div>
     <div class="col-md-12 column">
 		<table class="table table-striped">
 			<tr>
-				<th> Title </th>
-				<th> Event Start Date </th>
-				<th> Event End Date </th>
+				<th class="col-xs-2"> Title </th>
+				<th class="col-xs-2"> Event Start Date </th>
+				<th class="col-xs-2"> Event End Date </th>
+				<th class="col-xs-3"> Description </th>
 			</tr>
 
 			<% @events.each do |event| %>
-
+			<% if DateTime.now <= event.fromdate%>
 			<tr>
-				<td> <%= event.title %> </td>
+				<td style="word-wrap: break-word"> <%= event.title %> </td>
 				<td> <%= event.fromdate.to_time.strftime('%D') %> </td>
 				<% if event.todate != nil %>
 					<td> <%= event.todate.to_time.strftime('%D') %> </td>
 				<% else %>
-					<td> <%= "N/A" %>
+					<td> <%= "N/A" %> </td>
+				<% end %>
+				<% if event.description != nil %>
+					<td style="word-wrap: break-word"> <%= event.description %> </td>
+				<% else %>
+					<td> <%= "N/A" %> </td>
 				<% end %>
 				<td>
-					<div class="col-md-2 column">
+					<div class="col-md-4 column">
 					<%= link_to 'Show', event_path(event) %>
 					</div>
 					<% if admin_signed_in?%>
-						<div class="col-md-2 column">
+						<div class="col-md-4 column">
 						<%= link_to 'Edit', edit_event_path(event) %>
 						</div>
-						<div class="col-md-2 column">
+						<div class="col-md-4 column">
 						<%= link_to 'Delete', event_path(event), method: :delete %>
 						</div>
 					<% end %>
 				</td>
 			</tr>
+			<% end %>
+			<% end %>
 
+		</table>
+	</div>
+	<h1> List of Past Events </h1>
+	<div class="col-md-12 column">
+		<table class="table table-striped">
+			<tr>
+				<th class="col-xs-2"> Title </th>
+				<th class="col-xs-2"> Event Start Date </th>
+				<th class="col-xs-2"> Event End Date </th>
+				<th class="col-xs-3"> Description </th>
+			</tr>
+
+			<% @events.each do |event| %>
+			<% if DateTime.now > event.fromdate%>
+			<tr>
+				<td style="word-wrap: break-word"> <%= event.title %> </td>
+				<td> <%= event.fromdate.to_time.strftime('%D') %> </td>
+				<% if event.todate != nil %>
+					<td> <%= event.todate.to_time.strftime('%D') %> </td>
+				<% else %>
+					<td> <%= "N/A" %> </td>
+				<% end %>
+				<% if event.description != nil %>
+					<td style="word-wrap: break-word"> <%= event.description %> </td>
+				<% else %>
+					<td> <%= "N/A" %> </td>
+				<% end %>
+				<td>
+					<div class="col-md-4 column">
+					<%= link_to 'Show', event_path(event) %>
+					</div>
+					<% if admin_signed_in?%>
+						<div class="col-md-4 column">
+						<%= link_to 'Edit', edit_event_path(event) %>
+						</div>
+						<div class="col-md-4 column">
+						<%= link_to 'Delete', event_path(event), method: :delete %>
+						</div>
+					<% end %>
+				</td>
+			</tr>
+			<% end %>
 			<% end %>
 
 		</table>

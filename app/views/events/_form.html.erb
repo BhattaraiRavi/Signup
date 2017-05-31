@@ -5,7 +5,7 @@
         <%= form_for @event do |f| %>
           <% if @event.errors.any? %>
             <div id="error_explanation">
-            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+            <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved.</h2>
             <ul>
               <% event.errors.full_messages.each do |message| %>
               <li><%= message %></li>
@@ -33,6 +33,16 @@
               <%= f.label 'Event End Date' %><br>
               <%= f.date_select :todate, :prompt => { :day => 'Date', :month => 'Month', :year => 'Year' }  %>  
             </div>
+            <br>
+            <div class="description">
+              <%= f.label 'Do you want description for event?' %><br>
+              <%= f.select :description, ['Yes','No'] %>    
+            </div>
+            <br>
+            <div class="deschide">
+              <%= f.label 'Description' %><br>
+              <%= f.text_area :description %>  
+            </div>
             <p>
               <%= f.label :image %><br>
               <%= f.file_field :image %>
@@ -41,13 +51,16 @@
             <br>
               <%= f.submit %>
         <% end %>
-          </div>
+        </div>
+          
           <div class="col-md-8 column">
-        <img class="img-thumbnail" alt="FIT Building" src= "/fedex-institute.jpg">
+            <img class="img-thumbnail" alt="FIT Building" src= "/fedex-institute.jpg">
+          </div>
+          </div>
       </div>
       </div>
-    </div>
-</div>
+
+
 
 <script>
   $( ".optsel" ).change(function() {
@@ -58,4 +71,14 @@
       $(".datehide").show();
     } 
   });
+
+  $( ".description" ).change(function() {
+    if ($(this).find(':selected').val() == 'No') {
+      $(".deschide").hide();
+    } 
+    else if ($(this).find(':selected').val() == 'Yes') {
+      $(".deschide").show();
+    } 
+  });
+
 </script>

@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
 
 	def index
-		@events = Event.all.order('created_at ASC')
+		@events = Event.all.order('fromdate ASC')
 		if params[:search]
-			@events = Event.search(params[:search]).order("created_at ASC")
+			@events = Event.search(params[:search]).order("fromdate ASC")
 		else
-			@events = Event.all.order('created_at ASC')
+			@events = Event.all.order('fromdate ASC')
 		end
 	end
 
@@ -57,7 +57,7 @@ class EventsController < ApplicationController
 private
 
 def event_params
-	params.require(:event).permit(:title, :fromdate, :todate, :multiday, :image)
+	params.require(:event).permit(:title, :fromdate, :todate, :multiday, :image, :description)
 end
 
 end
