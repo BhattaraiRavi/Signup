@@ -16,17 +16,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  day: MyString
-  date: 1
-  month: MyString
-  year: 1
-  image: MyString
-
-two:
-  title: MyString
-  day: MyString
-  date: 1
-  month: MyString
-  year: 1
-  image: MyString
+  title: My Event
+  todate: 2017-05-31 00:00:00
+  fromdate: 2017-05-30 00:00:00
+  multiday: No
+  description: This is a sample test description.
+  image: myevent.jpg

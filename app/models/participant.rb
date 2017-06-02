@@ -15,6 +15,11 @@ class Participant < ApplicationRecord
 
 	belongs_to :event, optional: true
 
+  validates :name, presence: true
+  validates :email, presence: true, format: { with: /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/ }
+  validates :company, presence: true
+  
+
 	  
   def self.to_csv(attributes = column_names, options = {})
   	attributes = %w(name email company)

@@ -8,6 +8,6 @@ resources :events do |event|
     end 
  end
 
-root to: "events#index"
+root to: 'static#home'
 
 end

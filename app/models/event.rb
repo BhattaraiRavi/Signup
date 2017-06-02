@@ -24,6 +24,10 @@ class Event < ApplicationRecord
 
 	validates_processing_of :image
 	validate :image_size_validation
+	validates :title, presence: true
+	validates :title, length: {maximum: 100}
+	validates :fromdate, presence: true
+	validates :description, length: {maximum: 250}, allow_blank: true
  
 private
   def image_size_validation

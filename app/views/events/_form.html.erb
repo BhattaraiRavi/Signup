@@ -17,7 +17,7 @@
           <div class="col-md-4 column">
             <p>
               <%= f.label :title %><br>
-              <%= f.text_field :title %>
+              <%= f.text_area :title, size: "30x3" %>
             </p>
           <p>
            <div class="optsel">
@@ -27,11 +27,13 @@
           </p>
             <p>
               <%= f.label 'Event Start Date' %><br>
-              <%= f.date_select :fromdate, :prompt => { :day => 'Day', :month => 'Month', :year => 'Year' } %>
+              <%= f.date_select :fromdate, {:prompt => true}, :class => 'date-field'  %> <br><br>
+              <%= f.time_select :fromdate,  {:minute_step => 5, :ignore_date => true, :ampm => false, :prompt => {:hour => 'Hour', :minute => 'Minutes'}}, :class => 'date-field' %>
             </p>
             <div class="datehide">
               <%= f.label 'Event End Date' %><br>
-              <%= f.date_select :todate, :prompt => { :day => 'Date', :month => 'Month', :year => 'Year' }  %>  
+              <%= f.date_select :todate, {:prompt => true}, :class => 'date-field'  %> <br><br>
+              <%= f.time_select :todate,  {:minute_step => 5, :ignore_date => true, :ampm => false, :prompt => {:hour => 'Hour', :minute => 'Minutes'}}, :class => 'date-field' %>  
             </div>
             <br>
             <div class="description">
@@ -41,7 +43,7 @@
             <br>
             <div class="deschide">
               <%= f.label 'Description' %><br>
-              <%= f.text_area :description %>  
+              <%= f.text_area :description, size: "30x5" %>  
             </div>
             <p>
               <%= f.label :image %><br>

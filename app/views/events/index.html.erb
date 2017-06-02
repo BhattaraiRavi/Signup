@@ -19,16 +19,16 @@
 			</tr>
 
 			<% @events.each do |event| %>
-			<% if DateTime.now <= event.fromdate%>
+			<% if DateTime.now <= event.fromdate %>
 			<tr>
 				<td style="word-wrap: break-word"> <%= event.title %> </td>
-				<td> <%= event.fromdate.to_time.strftime('%D') %> </td>
-				<% if event.todate != nil %>
-					<td> <%= event.todate.to_time.strftime('%D') %> </td>
+				<td> <%= event.fromdate.to_time.strftime('%D %H:%M') %> </td>
+				<% if event.todate.present? %>
+					<td> <%= event.todate.to_time.strftime('%D %H:%M') %> </td>
 				<% else %>
 					<td> <%= "N/A" %> </td>
 				<% end %>
-				<% if event.description != nil %>
+				<% if event.description.present? %>
 					<td style="word-wrap: break-word"> <%= event.description %> </td>
 				<% else %>
 					<td> <%= "N/A" %> </td>
@@ -63,16 +63,16 @@
 			</tr>
 
 			<% @events.each do |event| %>
-			<% if DateTime.now > event.fromdate%>
+			<% if DateTime.now > event.fromdate %>
 			<tr>
 				<td style="word-wrap: break-word"> <%= event.title %> </td>
-				<td> <%= event.fromdate.to_time.strftime('%D') %> </td>
-				<% if event.todate != nil %>
-					<td> <%= event.todate.to_time.strftime('%D') %> </td>
+				<td> <%= event.fromdate.to_time.strftime('%D %H:%M') %> </td>
+				<% if event.todate.present? %>
+					<td> <%= event.todate.to_time.strftime('%D %H:%M') %> </td>
 				<% else %>
 					<td> <%= "N/A" %> </td>
 				<% end %>
-				<% if event.description != nil %>
+				<% if event.description.present? %>
 					<td style="word-wrap: break-word"> <%= event.description %> </td>
 				<% else %>
 					<td> <%= "N/A" %> </td>
