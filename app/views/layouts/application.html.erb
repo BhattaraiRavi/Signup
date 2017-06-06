@@ -12,12 +12,13 @@
   <div class="container">
     <div class="row clearfix well">
       <div class="col-md-12 column">
-        <%= link_to 'Home', root_path, :class=>"btn btn-primary", :style=>"float: left"%>
-        <div class="col-md-2 column">
-          <%= link_to 'Events', events_path, :class=>"btn btn-primary", :style=>"float: left"%>
+        <div class="col-md-4 column">
+        <%= link_to 'Home', root_path, :class=>"btn btn-primary", :style=>"margin-right: 16px"%>
+          <%= link_to 'Events', events_path, :class=>"btn btn-primary", :style=>"margin-right: 16px"%>
         </div>
        		<% if admin_signed_in? %>
-            <%= link_to 'Logout', destroy_admin_session_path, method: :delete , :class=>"btn btn-primary", :style=>"float: right"%>
+            <%= link_to 'Logout', destroy_admin_session_path, method: :delete , :class=>"btn btn-primary", :style=>"float: right; margin-right: 16px"%>
+            
           <% else %>
             <%= link_to 'Sign In', new_admin_session_path, :class=>"btn btn-primary" , :style=>"float: right"%>
           <% end %>

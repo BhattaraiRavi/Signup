@@ -27,7 +27,7 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -56,4 +56,17 @@ Rails.application.configure do
 
   config.time_zone = "Central Time (US & Canada)"
   config.active_record.default_timezone = :local
+
+  config.action_mailer.delivery_method = :smtp
+
+  # Only for gmail
+  config.action_mailer.smtp_settings = {
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: "gmail.com",
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: "youremailhere",
+  password: "emailpassword"
+  }
 end

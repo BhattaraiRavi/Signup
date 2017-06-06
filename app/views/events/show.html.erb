@@ -15,7 +15,7 @@
             <tbody>
               <tr>
                 <td><h4><strong> Date of Event: </strong></h4></td>
-                <td><h4><strong><%= @event.fromdate.to_time.strftime('%a, %B %e, %Y') %></strong></h4></td>
+                <td><h4><strong><%= @event.fromdate.to_time.strftime('%a, %B %e, %Y at %I:%M %p') %></strong></h4></td>
               </tr>
               <% if @event.description.present? %>
               <tr>
@@ -39,7 +39,7 @@
           <%= f.text_field :email %>
         </p>
          <p>
-          <%= f.label 'Company/Organization' %><br>
+          <%= f.label 'Company/Organization/Department' %><br>
           <%= f.text_field :company %>
         </p>
         <p>

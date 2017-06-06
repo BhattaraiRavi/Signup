@@ -27,12 +27,12 @@
           </p>
             <p>
               <%= f.label 'Event Start Date' %><br>
-              <%= f.date_select :fromdate, {:prompt => true}, :class => 'date-field'  %> <br><br>
+              <%= f.date_select :fromdate, {:prompt => true, :start_year => Date.today.year, :end_year => Date.today.year + 2}, :class => 'date-field' %> <br><br>
               <%= f.time_select :fromdate,  {:minute_step => 5, :ignore_date => true, :ampm => false, :prompt => {:hour => 'Hour', :minute => 'Minutes'}}, :class => 'date-field' %>
             </p>
             <div class="datehide">
               <%= f.label 'Event End Date' %><br>
-              <%= f.date_select :todate, {:prompt => true}, :class => 'date-field'  %> <br><br>
+              <%= f.date_select :todate, {:prompt => true, :start_year => Date.today.year, :end_year => Date.today.year + 2}, :class => 'date-field' %> <br><br>
               <%= f.time_select :todate,  {:minute_step => 5, :ignore_date => true, :ampm => false, :prompt => {:hour => 'Hour', :minute => 'Minutes'}}, :class => 'date-field' %>  
             </div>
             <br>
