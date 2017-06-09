@@ -11,6 +11,7 @@
 #  todate      :datetime
 #  multiday    :string
 #  description :string
+#  created_by  :string
 #
 
 require 'test_helper'

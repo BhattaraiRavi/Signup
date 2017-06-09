@@ -35,12 +35,14 @@
 				<% end %>
 				<td>
 					<% if admin_signed_in?%>
-						<div class="col-md-4 column">
-						<%= link_to 'Edit', edit_event_path(event) %>
-						</div>
-						<div class="col-md-4 column">
-						<%= link_to 'Delete', event_path(event), method: :delete, data: {confirm: "Are you sure you want to delete this?"}  %>
-						</div>
+						<% if (event.created_by == current_admin.email) || (current_admin.email == 'rbhttrai@memphis.edu') %>
+							<div class="col-md-4 column">
+							<%= link_to 'Edit', edit_event_path(event) %>
+							</div>
+							<div class="col-md-4 column">
+							<%= link_to 'Delete', event_path(event), method: :delete, data: {confirm: "Are you sure you want to delete this?"}  %>
+							</div>
+							<% end %>
 					<% end %>
 				</td>
 			</tr>

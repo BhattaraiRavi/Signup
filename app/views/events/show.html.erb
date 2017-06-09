@@ -76,7 +76,9 @@
         </table>  
         <p>
           <% if admin_signed_in? %>
-            <%= link_to "Export to CSV", participants_path(format: "csv"), :class=>"btn btn-primary", :disabled => false %>
+            <% if (@event.created_by == current_admin.email) || (current_admin.email == 'rbhttrai@memphis.edu') %>
+              <%= link_to "Export to CSV", participants_path(format: "csv"), :class=>"btn btn-primary", :disabled => false %>
+            <% end %>
           <% end %>
         </p>
     </div>
