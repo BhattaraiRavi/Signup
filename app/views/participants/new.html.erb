@@ -1,5 +1,6 @@
 <div class="container">
     <div class="row clearfix well">
+      <div class="col-sm-12 col-md-12 col-lg-12 column">
     	<% if @participant.errors.any? %>
             <div id="error_explanation">
             <h2><%= pluralize(@participant.errors.count, "error") %> prohibited you from being registered.</h2>
@@ -11,5 +12,6 @@
           </div>
         <% end %>
         <%= link_to "Try Again", event_path, :class=>"btn btn-primary", :disabled => false %>
+      </div>
     </div>
 </div

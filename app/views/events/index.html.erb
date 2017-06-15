@@ -1,15 +1,22 @@
 <div class="container">
   <div class="row clearfix well">
-    <div class="col-md-12 column">
+    <div class="col-sm-12 col-md-12 col-lg-12 column">
+    	<div class="col-sm-4 col-md-4 col-lg-4 column">
+    <% if admin_signed_in?%>
+    	<button onclick = "location.href='/events/new';" class="btn btn-primary" type="button">
+    	Create New Event
+    	</button>
+    <% end %>
+    </div>
     	<div align="right">
     	<%= form_tag(events_path, :method => "get", id: "search-form") do %>
     		<%= text_field_tag :search, params[:search], placeholder: "Search Events" %>
             <%= submit_tag "Search" %>
         <% end %>
-        </div>
+        </div><br>
     <h2> Current Events </h2>
     </div>
-    <div class="col-md-12 column">
+    <div class="col-sm-12 col-md-12 col-lg-12 column">
 		<table class="table table-striped">
 			<tr>
 				<th class="col-xs-2"> Title </th>
@@ -36,10 +43,10 @@
 				<td>
 					<% if admin_signed_in?%>
 						<% if (event.created_by == current_admin.email) || (current_admin.email == 'rbhttrai@memphis.edu') %>
-							<div class="col-md-4 column">
+							<div class="col-sm-4 col-md-4 col-lg-4 column">
 							<%= link_to 'Edit', edit_event_path(event) %>
 							</div>
-							<div class="col-md-4 column">
+							<div class="col-sm-4 col-md-4 col-lg-4 column">
 							<%= link_to 'Delete', event_path(event), method: :delete, data: {confirm: "Are you sure you want to delete this?"}  %>
 							</div>
 							<% end %>
@@ -51,7 +58,7 @@
 
 		</table>
 	</div>
-	<div class="col-md-12 column">
+	<div class="col-sm-12 col-md-12 col-lg-12 column">
 		<h2> Past Events </h2>
 		<table class="table table-striped">
 			<tr>
@@ -78,10 +85,10 @@
 				<% end %>
 				<td>
 					<% if admin_signed_in?%>
-						<div class="col-md-4 column">
+						<div class="col-sm-4 col-md-4 col-lg-4 column">
 						<%= link_to 'Edit', edit_event_path(event) %>
 						</div>
-						<div class="col-md-4 column">
+						<div class="col-md-4 col-md-4 col-lg-4 column">
 						<%= link_to 'Delete', event_path(event), method: :delete, data: {confirm: "Are you sure?"}  %>
 						</div>
 					<% end %>
@@ -93,12 +100,5 @@
 		</table>
 	</div>
 <br>
-<% if admin_signed_in?%>
-	<div class="col-md-2 column">
-    	<button onclick = "location.href='/events/new';" class="btn btn-primary" type="button">
-    	Create New Event
-    	</button>
-<% end %>
-	</div>
 	</div>
 </div>

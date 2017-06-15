@@ -1,3 +1,5 @@
+require 'rqrcode_png'
+
 class EventsController < ApplicationController
 
 	def index
@@ -10,8 +12,11 @@ class EventsController < ApplicationController
 	end
 
 	def show
+
 		@event = Event.find (params[:id])
 		@participant = Participant.new(event_id: params[:id])
+
+		@qr = RQRCode::QRCode.new("http://141.225.41.56:3000/events/"+@event.id.to_s).to_img.resize(100,100).to_data_url
 	end
 
 	def new
